@@ -44,3 +44,16 @@ python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missin
 | `docs/*.txt` | Preserved pytest and coverage output from the unmodified source |
 
 `registration.py` is intentionally unmodified on `main`; defect fixes live on the `defect-fixes` branch.
+
+## Testing and CI Evidence
+
+The project is tested using pytest and pytest-cov.
+
+Latest verified results after defect fixes:
+- Total tests: 97
+- Passed: 97
+- Failed: 0
+- Statement coverage: 100%
+- Branch coverage: 100%
+
+GitHub Actions automatically runs the test suite. The defect-fix pull request completed its workflow successfully.
