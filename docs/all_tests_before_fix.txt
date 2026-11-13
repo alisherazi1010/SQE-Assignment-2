@@ -1,0 +1,207 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/claude/repo
+plugins: platformdirs-4.13.0, cov-7.1.0
+collected 97 items
+
+tests/test_blackbox.py .............F.FF...F...F....F..F.....F...FF..F.. [ 50%]
+F...F.F..........FFFF.....F.FF                                           [ 81%]
+tests/test_whitebox.py ........F.....FF.F                                [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_check_credit_limit[BVA-08] ________________________
+tests/test_blackbox.py:115: in test_check_credit_limit
+    assert check_credit_limit(*inputs) is expected
+E   assert False is True
+E    +  where False = check_credit_limit(*(14, 4))
+_______________________ test_check_credit_limit[BVA-10] ________________________
+tests/test_blackbox.py:115: in test_check_credit_limit
+    assert check_credit_limit(*inputs) is expected
+E   assert False is True
+E    +  where False = check_credit_limit(*(15, 3))
+_______________________ test_check_credit_limit[BVA-12] ________________________
+tests/test_blackbox.py:115: in test_check_credit_limit
+    assert check_credit_limit(*inputs) is expected
+E   assert False is True
+E    +  where False = check_credit_limit(*(17, 1))
+_________________ test_prerequisites_satisfied[ECP-32+BVA-41] __________________
+tests/test_blackbox.py:135: in test_prerequisites_satisfied
+    assert prerequisites_satisfied(*inputs) is expected
+E   AssertionError: assert True is False
+E    +  where True = prerequisites_satisfied(*({'CS101'}, {'CS101', 'MATH101'}))
+___________________ test_registration_decision[ECP-10+DT-01] ___________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + REGISTERED
+______________________ test_registration_decision[ECP-16] ______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'REGISTERED' == 'PREREQUISITES_MISSING'
+E     
+E     - PREREQUISITES_MISSING
+E     + REGISTERED
+_______________ test_registration_decision[ECP-19+BVA-24+DT-05] ________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E     
+E     - WAITLISTED
+E     + REGISTERED
+______________________ test_registration_decision[BVA-21] ______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + REGISTERED
+______________________ test_registration_decision[BVA-28] ______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E     
+E     - WAITLISTED
+E     + REGISTERED
+______________________ test_registration_decision[BVA-30] ______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'CREDIT_LIMIT' == 'REGISTERED'
+E     
+E     - REGISTERED
+E     + CREDIT_LIMIT
+______________________ test_registration_decision[BVA-34] ______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'CREDIT_LIMIT' == 'REGISTERED'
+E     
+E     - REGISTERED
+E     + CREDIT_LIMIT
+______________________ test_registration_decision[DT-07] _______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'ALREADY_REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + ALREADY_REGISTERED
+______________________ test_registration_decision[DT-11] _______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + REGISTERED
+______________________ test_registration_decision[DT-13] _______________________
+tests/test_blackbox.py:214: in test_registration_decision
+    assert registration_decision(student, course) == expected
+E   AssertionError: assert 'ALREADY_REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + ALREADY_REGISTERED
+___________________ test_ST03_waitlist_appends_student_only ____________________
+tests/test_blackbox.py:261: in test_ST03_waitlist_appends_student_only
+    assert register_course(student, course) == "WAITLISTED"
+E   AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E     
+E     - WAITLISTED
+E     + REGISTERED
+_________________ test_ST04_waitlist_has_no_duplicate_entries __________________
+tests/test_blackbox.py:271: in test_ST04_waitlist_has_no_duplicate_entries
+    assert register_course(student, course) == "WAITLISTED"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+registration.py:65: in register_course
+    decision = registration_decision(student, course)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+registration.py:49: in registration_decision
+    raise ValueError("Invalid capacity or enrollment")
+E   ValueError: Invalid capacity or enrollment
+__________ test_unsuccessful_registration_changes_nothing[ST05-dues] ___________
+tests/test_blackbox.py:290: in test_unsuccessful_registration_changes_nothing
+    assert register_course(student, course) == status
+E   AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + REGISTERED
+________ test_unsuccessful_registration_changes_nothing[ST05-dues-full] ________
+tests/test_blackbox.py:290: in test_unsuccessful_registration_changes_nothing
+    assert register_course(student, course) == status
+E   AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E     
+E     - DUES_BLOCK
+E     + REGISTERED
+___________________ test_ST11_withdraw_success_updates_state ___________________
+tests/test_blackbox.py:310: in test_ST11_withdraw_success_updates_state
+    assert course.enrolled == 9
+E   AssertionError: assert 10 == 9
+E    +  where 10 = Course(code='CS201', credit_hours=3, capacity=30, enrolled=10, prerequisites=set(), waitlist=[]).enrolled
+_______________ test_ST13_register_then_withdraw_restores_state ________________
+tests/test_blackbox.py:328: in test_ST13_register_then_withdraw_restores_state
+    assert course == c0
+E   AssertionError: assert Course(code='..., waitlist=[]) == Course(code='..., waitlist=[])
+E     
+E     Omitting 5 identical items, use -vv to show
+E     Differing attributes:
+E     ['enrolled']
+E     
+E     Drill down into differing attribute enrolled:
+E       enrolled: 8 != 7
+________________ test_ST14_withdraw_twice_second_call_is_false _________________
+tests/test_blackbox.py:337: in test_ST14_withdraw_twice_second_call_is_false
+    assert course.enrolled == 0
+E   AssertionError: assert 1 == 0
+E    +  where 1 = Course(code='CS201', credit_hours=3, capacity=30, enrolled=1, prerequisites=set(), waitlist=[]).enrolled
+________________________ test_WB_P09_d7_true_waitlisted ________________________
+tests/test_whitebox.py:85: in test_WB_P09_d7_true_waitlisted
+    assert registration_decision(S(), C(enrolled=30)) == "WAITLISTED"
+E   AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E     
+E     - WAITLISTED
+E     + REGISTERED
+______________ test_WB_G01_register_course_waitlist_append_branch ______________
+tests/test_whitebox.py:129: in test_WB_G01_register_course_waitlist_append_branch
+    assert register_course(student, course) == "WAITLISTED"
+E   AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E     
+E     - WAITLISTED
+E     + REGISTERED
+_________ test_WB_G02_register_course_waitlist_already_present_branch __________
+tests/test_whitebox.py:136: in test_WB_G02_register_course_waitlist_already_present_branch
+    assert register_course(student, course) == "WAITLISTED"
+E   AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E     
+E     - WAITLISTED
+E     + REGISTERED
+______________________ test_WB_G04_withdraw_both_branches ______________________
+tests/test_whitebox.py:155: in test_WB_G04_withdraw_both_branches
+    assert course.enrolled == 0  # FR-13: enrolled decrements by one
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 1 == 0
+E    +  where 1 = Course(code='CS201', credit_hours=3, capacity=30, enrolled=1, prerequisites=set(), waitlist=[]).enrolled
+=========================== short test summary info ============================
+FAILED tests/test_blackbox.py::test_check_credit_limit[BVA-08] - assert False...
+FAILED tests/test_blackbox.py::test_check_credit_limit[BVA-10] - assert False...
+FAILED tests/test_blackbox.py::test_check_credit_limit[BVA-12] - assert False...
+FAILED tests/test_blackbox.py::test_prerequisites_satisfied[ECP-32+BVA-41] - ...
+FAILED tests/test_blackbox.py::test_registration_decision[ECP-10+DT-01] - Ass...
+FAILED tests/test_blackbox.py::test_registration_decision[ECP-16] - Assertion...
+FAILED tests/test_blackbox.py::test_registration_decision[ECP-19+BVA-24+DT-05]
+FAILED tests/test_blackbox.py::test_registration_decision[BVA-21] - Assertion...
+FAILED tests/test_blackbox.py::test_registration_decision[BVA-28] - Assertion...
+FAILED tests/test_blackbox.py::test_registration_decision[BVA-30] - Assertion...
+FAILED tests/test_blackbox.py::test_registration_decision[BVA-34] - Assertion...
+FAILED tests/test_blackbox.py::test_registration_decision[DT-07] - AssertionE...
+FAILED tests/test_blackbox.py::test_registration_decision[DT-11] - AssertionE...
+FAILED tests/test_blackbox.py::test_registration_decision[DT-13] - AssertionE...
+FAILED tests/test_blackbox.py::test_ST03_waitlist_appends_student_only - Asse...
+FAILED tests/test_blackbox.py::test_ST04_waitlist_has_no_duplicate_entries - ...
+FAILED tests/test_blackbox.py::test_unsuccessful_registration_changes_nothing[ST05-dues]
+FAILED tests/test_blackbox.py::test_unsuccessful_registration_changes_nothing[ST05-dues-full]
+FAILED tests/test_blackbox.py::test_ST11_withdraw_success_updates_state - Ass...
+FAILED tests/test_blackbox.py::test_ST13_register_then_withdraw_restores_state
+FAILED tests/test_blackbox.py::test_ST14_withdraw_twice_second_call_is_false
+FAILED tests/test_whitebox.py::test_WB_P09_d7_true_waitlisted - AssertionErro...
+FAILED tests/test_whitebox.py::test_WB_G01_register_course_waitlist_append_branch
+FAILED tests/test_whitebox.py::test_WB_G02_register_course_waitlist_already_present_branch
+FAILED tests/test_whitebox.py::test_WB_G04_withdraw_both_branches - Assertion...
+======================== 25 failed, 72 passed in 0.21s =========================

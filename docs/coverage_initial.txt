@@ -1,0 +1,4 @@
+registration.py:65: in register_course
+registration.py:49: ValueError
+registration.py      57      3     26      3    93%   51, 59, 71
+21 failed, 58 passed in 0.50s
